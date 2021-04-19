@@ -2,159 +2,130 @@
 
 &nbsp;
 
-## Github Pages
-
-https://pages.github.com/#user-site
-
-https://pages.github.com/
-
-GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files
-
-You can host your site on GitHub's github.io domain or your own custom domain.
+## Types of Functions
 
 &nbsp;
 
-## HTML, CSS Review
+    // Named functions
+    function doSomething() {
+    console.log('you clicked the red box!');
+    }
 
-Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
+    const redBox = document.querySelector('.centered-box');
 
-Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.
-
-&nbsp;
-
-## DOM Manipulation (Document Object Model)
-
-The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web.
-
-The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, programming languages can connect to the page.
-
-A Web page is a document. This document can be either displayed in the browser window or as the HTML source. But it is the same document in both cases. The Document Object Model (DOM) represents that same document so it can be manipulated. The DOM is an object-oriented representation of the web page, which can be modified with a scripting language such as JavaScript.
+    redBox.addEventListener('click', doSomething);
 
 &nbsp;
 
-## querySelector();
+An anonymous function is a function without a name. An anonymous function is often not accessible after its initial creation.
 
-The querySelector() method returns the first element that matches one or more CSS selectors. If no match is found, it returns null.
+    // Anonymous functions
+    const bigGreenBox = document.querySelector('.box-2');
 
-Before querySelector() was introduced, developers widely used the getElementById() method which fetches an element with a specified id value.
-
-Although getElementById() is still a useful method, but with the newer querySelector() and querySelectorAll() methods we are free to target elements based on any CSS selector, thus we have more flexibility.
-
-&nbsp;
-
-    document.querySelector();
-    document.querySelectorAll();
-
-    //The most used to access the DOM, because with it you can access class, id and tag. So each case would be:
-
-    document.querySelector('#id');
-    document.querySelector('.classname');
-    document.querySelector('section');
-
-The querySelector() method returns the first element that matches a specified CSS selector(s) in the document.
-
-Note: The querySelector() method only returns the first element that matches the specified selectors. To return all the matches, use the querySelectorAll() method instead.
-
-&nbsp;
-
-## Event Listeners
-
-An event listener is a procedure or function in a computer program that waits for an event to occur. Examples of an event are the user clicking or moving the mouse, pressing a key on the keyboard, disk I/O, network activity, or an internal timer or interrupt. The listener is programmed to react to an input or signal by calling the event's handler.
-
-The term event listener is often specific to Java and JavaScript. In other languages, a subroutine that performs a similar function is referred to as an event handler.
-
-The following JavaScript code would add an event listener to an HTML document:
-
-    document.addEventListener('click', myfunction, false);
-
-In this example, when HTML is rendered in a browser, the listener calls the function "myfunction" (defined elsewhere in the script) when the user clicks.
-
-&nbsp;
-
-## Absolute Positioning In CSS
-
-This is a very powerful type of positioning that allows you to literally place any page element exactly where you want it. You use the positioning attributes top, left, bottom, and right to set the location. Remember that these values will be relative to the next parent element with relative (or absolute) positioning. If there is no such parent, it will default all the way back up to the <html> element itself meaning it will be placed relative to the page itself.
-
-The trade-off (and most important thing to remember) about absolute positioning is that these elements are removed from the flow of elements on the page. An element with this type of positioning is not affected by other elements and it doesn’t affect other elements. This is a serious thing to consider every time you use absolute positioning. Its overuse or improper use can limit the flexibility of your site.
-
-&nbsp;
-
-## Nested Event Listeners
-
-    const button1 = document.querySelector('#button-1');
-    const button2 = document.querySelector('#button-2');
-    const output = document.querySelector('.output');
-
-    // Example of nested event listener (not reccomended)
-    // The button2 eventListener will not be set until button1 is clicked
-
-    button1.addEventListener('click', () => {
-
-        output.style.backgroundColor = 'green';
-
-        button2.addEventListener('click', () => {
-            output.style.backgroundColor = 'red';
-        });
-
+    bigGreenBox.addEventListener('click', function () {
+    console.log('you clicked the big green box');
     });
 
 &nbsp;
 
-## Event
+An arrow function expression is a compact alternative to a traditional function expression, but is limited and can't be used in all situations.
 
-What is an Event ?
-JavaScript's interaction with HTML is handled through events that occur when the user or the browser manipulates a page.
+Differences & Limitations:
 
-When the page loads, it is called an event. When the user clicks a button, that click too is an event. Other examples include events like pressing any key, closing a window, resizing a window, etc.
+- Does not have its own bindings to this or super, and should not be used as methods.
+- Does not have arguments, or new.target keywords.
+- Not suitable for call, apply and bind methods, which generally rely on establishing a scope.
+- Can not be used as constructors.
+- Can not use yield, within its body.
 
-Developers can use these events to execute JavaScript coded responses, which cause buttons to close windows, messages to be displayed to users, data to be validated, and virtually any other type of response imaginable.
-
-Events are a part of the Document Object Model (DOM) Level 3 and every HTML element contains a set of events which can trigger JavaScript Code.
-
-&nbsp;
-
-Examples
-
-- onclick Event Type
-  This is the most frequently used event type which occurs when a user clicks the left button of his mouse.
-
-- onsubmit Event Type
-  onsubmit is an event that occurs when you try to submit a form.
+        // Anonymous arrow function
+        const container = document.querySelector('.container');
+        container.addEventListener('click', () => {
+        console.log('you clicked the first gray container');
+        });
 
 &nbsp;
 
-## Target Event Property
+## Adding Event Listeners In a Loop
 
-The target event property returns the element that triggered the event.
+    // Adding event listeners in a loop
+    const purpleBoxes = document.querySelectorAll('.small-inner-box');
 
-The target property gets the element on which the event originally occurred, opposed to the currentTarget property, which always refers to the element whose event listener triggered the event.
+    for (const box of purpleBoxes) {
 
-    event.target
+    box.addEventListener('click', function (event) {
+
+    console.log(event);
+    const elementThatWasClicked = event.target;
+    elementThatWasClicked.style.backgroundColor = 'green';
+    });
+
+    }
 
 &nbsp;
 
-## Creating DOM Elements
+## Transitions
 
-The createElement() method creates an Element Node with the specified name.
+    // Transitions
+    const pinkSquare = document.querySelector('.transition-element');
+    pinkSquare.addEventListener('click', function () {
+    pinkSquare.classList.add('invisible');
+    });
 
-    After the element is created, use the element.appendChild() or element.insertBefore() method to insert it to the document.
+The classList property returns the class name(s) of an element, as a DOMTokenList object.
 
-    // Retrieves and style the 'container' element
-    const container = document.querySelector('#container');
-    container.style.padding = '20px';
-    container.style.backgroundColor = 'purple';
+This property is useful to add, remove and toggle CSS classes on an element.
 
-    // Creates a new element (not yet added to page)
-    const title = document.createElement('h1');
-    title.style.color = 'white';
-    title.style.fontFamily = 'Arial, sans-serif';
-    title.innerText = 'This is the best class ever!';
+The classList property is read-only, however, you can modify it by using the add() and remove() methods.
 
-    // Adds an element to the page
-    container.appendChild(title);
+&nbsp;
 
-    // We can continue to modify title after its been added to the page
-    title.style.color = 'green';
+## Math.random()
 
-    // To remove an element from the page
-    // title.remove();
+The Math.random() function returns a floating-point, pseudo-random number in the range 0 to less than 1
+
+- Will return a number between 0 and 1, you can then time it up to get larger numbers.
+- When using bigger numbers remember to use Math.floor if you want it to be a integer
+
+        // Will return a integer between 0 and 9
+        Math.floor(Math.random() _ 10)
+
+        // Will return a integer between 0 and 10
+        Math.floor(Math.random() _ 11)
+
+&nbsp;
+
+## Math.floor()
+
+The Math.floor() function returns the largest integer less than or equal to a given number.
+
+    console.log(Math.floor(5.95));
+    // expected output: 5
+
+    console.log(Math.floor(5.05));
+    // expected output: 5
+
+    console.log(Math.floor(5));
+    // expected output: 5
+
+    console.log(Math.floor(-5.05));
+    // expected output: -6
+
+&nbsp;
+
+## sort()
+
+The sort() method sorts the items of an array.
+
+The sort order can be either alphabetic or numeric, and either ascending (up) or descending (down).
+
+By default, the sort() method sorts the values as strings in alphabetical and ascending order.
+
+This works well for strings ("Apple" comes before "Banana"). However, if numbers are sorted as strings, "25" is bigger than "100", because "2" is bigger than "1".
+
+Because of this, the sort() method will produce an incorrect result when sorting numbers.
+
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.sort();
+
+    // output: Apple, Banana, Mango, Orange
